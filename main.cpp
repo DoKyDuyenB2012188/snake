@@ -8,7 +8,6 @@ void ve_tuong();
 void khoi_tao_ran(int toadox[], int toadoy[]);
 void ve_ran(int toadox[], int toadoy[]);
 void them(int a[], int x);
-void xoa(int a[], int vt);
 void xu_ly_ran(int toadox[], int toadoy[], int x, int y, int &xqua, int &yqua);
 void xoa_du_lieu_cu(int toadox[], int toadoy[]);
 bool kt_ran_cham_duoi(int toadox[], int toadoy[]);
@@ -131,33 +130,24 @@ void xoa_du_lieu_cu(int toadox[], int toadoy[]) {
 	}
 }
 void xu_ly_ran(int toadox[],int toadoy[],int x, int y, int &xqua, int &yqua) {
-	//b1 them doa do moi vao dau mang
+
 	them(toadox, x);
 	them(toadoy, y);
-	if (kt_ran_an_qua(xqua, yqua, toadox[0], toadoy[0])!=true) {
-		//b2 xoa toa do cuoi mang
-		xoa(toadox, sl - 1);
-		xoa(toadoy, sl - 1);
-	}
-	else {
+	if (kt_ran_an_qua(xqua, yqua, toadox[0], toadoy[0]) == true) {
+		sl++;
 		tao_qua(xqua, yqua, toadox, toadoy);
 	}
 	//b3 ve ran
 	ve_ran(toadox, toadoy);
 }
 void them(int a[], int x) {
+	                  
 	for (int i = sl; i > 0;i--) {
 		a[i] = a[i - 1];
 	}
 	a[0] = x;
-	sl++;
 }
-void xoa(int a[], int vt) {
-	for (int i = vt;i < sl;i++) {
-		a[i] = a[i + 1];
-	}
-	sl--;
-}
+
 bool kt_ran_cham_tuong(int x0, int y0) {
 	//ran cham tuong tren
 	if (y0 == 1 && (x0 >= 10 && x0<= 100)) {
